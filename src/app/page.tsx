@@ -1,65 +1,104 @@
-import Image from "next/image";
+"use client";
+import { useEffect, useRef } from "react";
+import { useRouter } from "next/navigation";
+import { ReactNode } from "react";
+import * as THREE from "three";
+import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
+import { DRACOLoader } from "three/examples/jsm/loaders/DRACOLoader.js";
+
+type ButtonProps = {
+  href: string;
+  children: ReactNode;
+};
+
+const Button = ({ href, children }: ButtonProps) => (
+  <a
+    href={href}
+    className="bg-white/40 text-4xl backdrop-blur-2xl px-20 py-4 text-black hover:bg-white w-full"
+  >
+    {children}
+  </a>
+);
+
+function BackgroundModel() {
+  const bgRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const width = window.innerWidth;
+    const height = window.innerHeight;
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
+    camera.position.z = 5;
+
+    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+    renderer.setSize(width, height);
+    renderer.domElement.style.position = "absolute";
+    renderer.domElement.style.top = "0";
+    renderer.domElement.style.left = "0";
+    renderer.domElement.style.width = "100vw";
+    renderer.domElement.style.height = "100vh";
+    renderer.domElement.style.zIndex = "0";
+    renderer.domElement.style.pointerEvents = "none";
+    renderer.domElement.style.filter = "blur(8px) brightness(0.7)";
+
+    if (bgRef.current) {
+      bgRef.current.appendChild(renderer.domElement);
+    }
+
+    const light = new THREE.AmbientLight(0xffffff, 1);
+    scene.add(light);
+
+    const loader = new GLTFLoader();
+    const dracoLoader = new DRACOLoader();
+    dracoLoader.setDecoderPath("https://www.gstatic.com/draco/v1/decoders/");
+    loader.setDRACOLoader(dracoLoader);
+
+    loader.load("/models/animal_cell.glb", (gltf) => {
+      scene.add(gltf.scene);
+      const animate = () => {
+        requestAnimationFrame(animate);
+        gltf.scene.rotation.y += 0.005;
+        gltf.scene.rotation.x += 0.005;
+        renderer.render(scene, camera);
+      };
+      animate();
+    });
+
+    return () => {
+      if (bgRef.current && renderer.domElement.parentNode === bgRef.current) {
+        bgRef.current.removeChild(renderer.domElement);
+      }
+      renderer.dispose();
+    };
+  }, []);
+
+  return (
+    <div
+      ref={bgRef}
+      style={{
+        position: "fixed",
+        top: 0,
+        left: 0,
+        width: "100vw",
+        height: "100vh",
+        zIndex: 0,
+        overflow: "hidden",
+      }}
+      aria-hidden="true"
+    />
+  );
+}
 
 export default function Home() {
+  const router = useRouter();
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
+    <div className="relative flex flex-col min-h-screen items-center justify-center font-sans bg-black/20 gap-10">
+      <BackgroundModel />
+      <h1 className="z-10 text-8xl">Pembelajaran Sel Interaktif</h1>
+      <div className="flex gap-10 z-10 max-w-3xl">
+        <Button href={"/hewan"}>Hewan</Button>
+        <Button href={"/tumbuhan"}>Tumbuhan</Button>
+      </div>
     </div>
   );
 }
