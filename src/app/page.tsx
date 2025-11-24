@@ -53,7 +53,7 @@ function BackgroundModel() {
     dracoLoader.setDecoderPath("https://www.gstatic.com/draco/v1/decoders/");
     loader.setDRACOLoader(dracoLoader);
 
-    loader.load("/models/animal_cell.glb", (gltf) => {
+    loader.load("/models/animal/animal_renamed.glb", (gltf) => {
       scene.add(gltf.scene);
       const animate = () => {
         requestAnimationFrame(animate);

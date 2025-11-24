@@ -1,58 +1,94 @@
+// AnimalCell.tsx
 "use client";
-import ModelViewer from "./ModelViewer";
+import ModelViewer, { PartInfo } from "./ModelViewer";
+import DetailViewer from "./DetailViewer";
+import { useState } from "react";
 
-// Kita buat array yang berisi path file, nama untuk deteksi, dan deskripsi
-const cellModels = [
+const cellModels: PartInfo[] = [
   {
-    fileName: "Nucleus.glb",
-    name: "Nucleus",
-    description: "Inti sel yang mengandung materi genetik...",
-    imagePath: "/img/animal_nucleous.png", // <--- Tambahkan ini!
-  },
-  {
-    fileName: "Mitochondria.glb",
-    name: "Mitochondria",
-    description: "Mitokondria: Tempat produksi energi (ATP).",
-  },
-  {
-    fileName: "Golgi Apparatus.glb",
-    name: "Golgi Apparatus",
-    description: "Badan Golgi: Memproses dan mengemas protein.",
-  },
-  {
-    fileName: "Rough Endoplasmic Reticulum.glb",
-    name: "Rough ER",
+    id: "nukleus",
+    name: "Nukleus",
     description:
-      "Retikulum Endoplasma Kasar: Tempat sintesis protein (ada ribosom).",
+      "Inti sel yang mengandung materi genetik (DNA) dan mengontrol seluruh aktivitas sel.",
+    imagePath: "/img/animal_nucleous.png",
   },
   {
-    fileName: "Smooth Endoplasmic Reticulum.glb",
-    name: "Smooth ER",
+    id: "mitokondria",
+    name: "Mitokondria",
     description:
-      "Retikulum Endoplasma Halus: Sintesis lipid dan detoksifikasi.",
-  },
-  // File "kuning-kuning.glb" mungkin lisosom atau sentriol, sesuaikan namanya
-  {
-    fileName: "kuning-kuning.glb",
-    name: "Lysosome",
-    description: "Lisosom: Mencerna bagian sel yang rusak atau zat asing.",
-  },
-  // Bagian wadah/cairan biasanya tidak perlu interaktif, tapi tetap diload visualnya
-  {
-    fileName: "airnya.glb",
-    name: "Cytoplasm",
-    description: "Sitoplasma: Cairan tempat organel berada.",
+      "Pembangkit tenaga sel. Tempat respirasi seluler untuk menghasilkan energi (ATP).",
+    imagePath: "/img/animal_mitochondria.png",
+    detailModelPath: "/models/mitochondria.glb",
   },
   {
-    fileName: "wadahnya.glb",
-    name: "Membrane",
-    description: "Membran Sel: Pelindung luar sel.",
+    id: "badan golgi",
+    name: "Badan Golgi",
+    description:
+      "Tempat memodifikasi, menyortir, dan mengemas protein dan lipid dari RE untuk dikirim ke tempat lain.",
+    imagePath: "/img/animal_golgi.png",
+  },
+  {
+    id: "re kasar",
+    name: "Retikulum Endoplasma Kasar (REK)",
+    description:
+      "Jalur transportasi yang ditempeli ribosom (bintik merah). Berfungsi untuk sintesis protein.",
+    imagePath: "/img/animal_rer.png",
+  },
+  {
+    id: "ser",
+    name: "Retikulum Endoplasma Halus (REH)",
+    description:
+      "Tidak memiliki ribosom. Berfungsi untuk sintesis lipid (lemak), metabolisme karbohidrat, dan detoksifikasi.",
+    imagePath: "/img/animal_ser.png",
+  },
+  {
+    id: "lisosom",
+    name: "Lisosom",
+    description:
+      "Sistem pencernaan sel. Berisi enzim untuk memecah limbah, bakteri, atau bagian sel yang rusak.",
+    imagePath: "/img/animal_lysosome.png",
+  },
+  {
+    id: "sentriol",
+    name: "Sentriol / Sentrosom",
+    description:
+      "Berperan penting dalam proses pembelahan sel dengan membentuk benang spindel.",
+    imagePath: "/img/animal_centriole.png",
+  },
+  {
+    id: "wadah",
+    name: "Sitoplasma",
+    description:
+      "Cairan seperti jeli yang mengisi bagian dalam sel dan mengelilingi organel.",
+    imagePath: "/img/animal_cytoplasm.png",
+  },
+  {
+    id: "membran",
+    name: "Membran Sel",
+    description:
+      "Lapisan pelindung terluar yang mengatur keluar masuknya zat dari dan ke dalam sel.",
+    imagePath: "/img/animal_membrane.png",
   },
 ];
 
 export default function AnimalCell() {
-  // Base path folder kamu di public
-  const basePath = "/models/animal/";
+  const modelPath = "/models/animal/animal_renamed.glb";
+  const [detailPart, setDetailPart] = useState<PartInfo | null>(null);
 
-  return <ModelViewer basePath={basePath} models={cellModels} />;
+  return (
+    <>
+      <ModelViewer
+        modelPath={modelPath}
+        modelsData={cellModels}
+        onViewDetail={(part) => setDetailPart(part)}
+      />
+
+      {detailPart && detailPart.detailModelPath && (
+        <DetailViewer
+          modelPath={detailPart.detailModelPath}
+          onClose={() => setDetailPart(null)}
+        />
+      )}
+    </>
+  );
 }
