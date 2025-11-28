@@ -125,7 +125,7 @@ export default function ModelViewer({
               .trim();
 
             const isWadah =
-              cleanName.includes("wadah") || cleanName.includes("membrane");
+              cleanName.includes("wadah") || cleanName.includes("membrane") || cleanName.includes("cell wall");
             const isAir =
               cleanName.includes("air") || cleanName.includes("cytoplasm");
 

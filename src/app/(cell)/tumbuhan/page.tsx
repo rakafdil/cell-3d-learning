@@ -1,7 +1,7 @@
 import React from "react";
 import PlantCell from "../../../../components/PlantCell";
 
-const HewanPage = () => {
+const TumbuhanPage = () => {
   return (
     <div>
       <PlantCell />
@@ -9,4 +9,4 @@ const HewanPage = () => {
   );
 };
 
-export default HewanPage;
+export default TumbuhanPage;
