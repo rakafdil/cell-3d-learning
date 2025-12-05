@@ -1,4 +1,3 @@
-// AnimalCell.tsx
 "use client";
 import ModelViewer, { PartInfo } from "./ModelViewer";
 import DetailViewer from "./DetailViewer";
@@ -9,14 +8,14 @@ const cellModels: PartInfo[] = [
     id: "nukleus",
     name: "Nukleus",
     description:
-      "Inti sel yang mengandung materi genetik (DNA) dan mengontrol seluruh aktivitas sel.",
+      "Nukleus berbentuk bulat/oval dan berada di tengah sel. Di dalamnya terdapat nukleolus dan kromosom yang membawa DNA atau RNA. Nukleus diselubungi membran rangkap dan berfungsi sebagai pusat pengatur seluruh kegiatan sel.",
     imagePath: "/img/animal_nucleous.png",
   },
   {
     id: "mitokondria",
     name: "Mitokondria",
     description:
-      "Pembangkit tenaga sel. Tempat respirasi seluler untuk menghasilkan energi (ATP).",
+      "Mitokondria memiliki membran luar dan dalam yang berlekuk membentuk krista. Di dalamnya berlangsung respirasi menghasilkan energi, sehingga disebut ‘power house’ sel.",
     imagePath: "/img/animal_mitochondria.png",
     detailModelPath: "/models/mitochondria.glb",
   },
@@ -24,50 +23,50 @@ const cellModels: PartInfo[] = [
     id: "badan golgi",
     name: "Badan Golgi",
     description:
-      "Tempat memodifikasi, menyortir, dan mengemas protein dan lipid dari RE untuk dikirim ke tempat lain.",
+      "Badan Golgi terdiri dari kantong dan gelembung kecil bertumpuk. Berfungsi memproses, mengemas, dan mengirim protein serta lendir. Pada tumbuhan disebut diktiosom.",
     imagePath: "/img/animal_golgi.png",
   },
   {
     id: "re kasar",
     name: "Retikulum Endoplasma Kasar (REK)",
     description:
-      "Jalur transportasi yang ditempeli ribosom (bintik merah). Berfungsi untuk sintesis protein.",
+      "Retikulum endoplasma yaitu struktur benang-benang yang bermuara di inti sel.Retikulum endoplasma kasar disebut demikian karena permukaannya ditempeli banyak ribosom. Ribosom yang mulai mensintesis protein dengan tempat tujuan tertentu, seperti organel tertentu atau membran, akan menempel pada retikulum endoplasma kasar. Berfungsi untuk sintesis dan penyaluran protein.",
     imagePath: "/img/animal_rer.png",
   },
   {
     id: "ser",
     name: "Retikulum Endoplasma Halus (REH)",
     description:
-      "Tidak memiliki ribosom. Berfungsi untuk sintesis lipid (lemak), metabolisme karbohidrat, dan detoksifikasi.",
+      "Retikulum endoplasma yaitu struktur benang-benang yang bermuara di inti sel. Retikulum Endoplasma Halus tidak memiliki ribosom. Berfungsi mensintesis lipid, kolesterol, dan melakukan detoksifikasi.",
     imagePath: "/img/animal_ser.png",
   },
   {
     id: "lisosom",
     name: "Lisosom",
     description:
-      "Sistem pencernaan sel. Berisi enzim untuk memecah limbah, bakteri, atau bagian sel yang rusak.",
+      "Lisosom adalah kantong bermembran tunggal yang mengandung enzim pencernaan. Berfungsi mencerna bagian sel yang rusak atau zat asing yang masuk ke dalam sel.",
     imagePath: "/img/animal_lysosome.png",
   },
   {
     id: "sentriol",
     name: "Sentriol / Sentrosom",
     description:
-      "Berperan penting dalam proses pembelahan sel dengan membentuk benang spindel.",
+      "Sentriol adalah organel silinder kecil yang biasanya berpasangan (sentrosom) dan berperan penting dalam pembelahan sel dengan membentuk benang spindel, menentukan arah pembelahan, serta membantu pembentukan silia dan flagela.",
     imagePath: "/img/animal_centriole.png",
   },
   {
     id: "wadah",
     name: "Sitoplasma",
     description:
-      "Cairan seperti jeli yang mengisi bagian dalam sel dan mengelilingi organel.",
+      "Sitoplasma adalah cairan tempat semua organel berada. Mengandung air, mineral, protein, dan berbagai senyawa lain untuk menunjang proses metabolisme sel.",
     imagePath: "/img/animal_cytoplasm.png",
   },
   {
     id: "membran",
     name: "Membran Sel",
     description:
-      "Lapisan pelindung terluar yang mengatur keluar masuknya zat dari dan ke dalam sel.",
-    imagePath: "/img/animal_membrane.png",
+      "Membran sel atau membran plasma bersifat semipermeabel, sehingga hanya zat tertentu yang dapat melewatinya. Berfungsi melindungi sel serta mengatur keluar masuknya zat.",
+    imagePath: "/img/animal_cytoplasm.png",
   },
 ];
 
