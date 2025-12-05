@@ -10,6 +10,7 @@ const organels: PartInfo[] = [
     description:
       "Inti sel yang mengandung materi genetik (DNA) dan mengontrol seluruh aktivitas sel.",
     detailModelPath: "/models/plant/nucleus.glb",
+    imagePath: "/img/plant-nucleus.jpg"
   },
   {
     id: "mitochondria",
@@ -17,6 +18,7 @@ const organels: PartInfo[] = [
     description:
       "Pembangkit tenaga sel. Tempat respirasi seluler untuk menghasilkan energi (ATP).",
     detailModelPath: "/models/plant/mitochondria.glb",
+    imagePath: "/img/plant-mitochondria.jpeg"
   },
   {
     id: "golgi_apparatus",
@@ -24,6 +26,7 @@ const organels: PartInfo[] = [
     description:
       "Tempat memodifikasi, menyortir, dan mengemas protein dan lipid dari RE untuk dikirim ke tempat lain.",
     detailModelPath: "/models/plant/golgi_apparatus.glb",
+    imagePath: "/img/plant-golgi_apparatus.webp"
   },
   {
     id: "rer",
@@ -31,6 +34,7 @@ const organels: PartInfo[] = [
     description:
       "Jalur transportasi yang ditempeli ribosom (bintik merah). Berfungsi untuk sintesis protein.",
     detailModelPath: "/models/plant/rer.glb",
+    imagePath: "/img/plant-rough-retikulum-endoplasma.jpg"
   },
   {
     id: "ser",
@@ -38,6 +42,7 @@ const organels: PartInfo[] = [
     description:
       "Tidak memiliki ribosom. Berfungsi untuk sintesis lipid (lemak), metabolisme karbohidrat, dan detoksifikasi.",
     detailModelPath: "/models/plant/ser.glb",
+    imagePath: "/img/plant-smooth-retikulum-endoplasma.jpg"
   },
   {
     id: "centrosome",
@@ -45,6 +50,7 @@ const organels: PartInfo[] = [
     description:
       "Berperan penting dalam proses pembelahan sel dengan membentuk benang spindel.",
     detailModelPath: "/models/plant/centrosome.glb",
+    imagePath: "/img/plant-centrosome.jpg"
   },
   {
     id: "cytoplasm",
@@ -52,6 +58,7 @@ const organels: PartInfo[] = [
     description:
       "Cairan seperti jeli yang mengisi bagian dalam sel dan mengelilingi organel.",
     detailModelPath: "/models/plant/cytoplasm.glb",
+    imagePath: "/img/plant-cytoplasm.png"
   },
   {
     id: "cell_wall",
@@ -59,6 +66,7 @@ const organels: PartInfo[] = [
     description:
       "Lapisan pelindung kaku yang melindungi sel tumbuhan dan mempertahankan struktur sel",
     detailModelPath: "/models/plant/cell_wall.glb",
+    imagePath: "/img/plant-wall.png"
   },
   {
     id: "vacuole",
@@ -66,6 +74,7 @@ const organels: PartInfo[] = [
     description:
       "Organel besar berisi cairan yang menyimpan air, nutrisi, dan limbah. Pada sel tumbuhan, vakuola sangat besar dan membantu menjaga tekanan turgor sel.",
     detailModelPath: "/models/plant/vacuole.glb",
+    imagePath: "/img/plant-vacuole.jpg"
   },
   {
     id: "chloroplast",
@@ -73,6 +82,7 @@ const organels: PartInfo[] = [
     description:
       "Organel yang mengandung klorofil untuk proses fotosintesis. Mengubah energi cahaya menjadi energi kimia (glukosa).",
     detailModelPath: "/models/plant/chloroplast.glb",
+    imagePath: "/img/plant-chloroplast.webp"
   },
 ];
 
