@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { QuizQuestion } from "@/lib/gemini";
+import { QuizQuestion } from "../lib/gemini";
 
 interface QuizProps {
   questions: QuizQuestion[];
