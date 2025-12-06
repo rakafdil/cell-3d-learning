@@ -37,6 +37,14 @@ export default function CellLayout({ children }: CellLayoutProps) {
     }
   };
 
+  const handleQuiz = () => {
+    if (isAnimal) {
+      router.push("/hewan/quiz");
+    } else if (isPlant) {
+      router.push("/tumbuhan/quiz");
+    }
+  };
+
   return (
     <div className="relative w-screen h-screen overflow-hidden bg-gradient-to-br from-gray-900 to-gray-800">
       {/* Loading Overlay */}
@@ -104,30 +112,43 @@ export default function CellLayout({ children }: CellLayoutProps) {
             {isAnimal ? "Sel Hewan" : isPlant ? "Sel Tumbuhan" : "Sel 3D"}
           </h1>
 
-          {/* Switch Button */}
-          <div className="flex items-center gap-3 bg-gray-800/50 rounded-full p-1 border border-white/10">
-            <button
-              onClick={handleToggle}
-              disabled={isLoading}
-              className={`px-4 py-2 rounded-full font-medium transition-all duration-300 ${
-                isAnimal
-                  ? "bg-blue-600 text-white shadow-lg"
-                  : "text-gray-400 hover:text-white"
-              } ${isLoading ? "opacity-50 cursor-not-allowed" : ""}`}
-            >
-              🐾 Hewan
-            </button>
-            <button
-              onClick={handleToggle}
-              disabled={isLoading}
-              className={`px-4 py-2 rounded-full font-medium transition-all duration-300 ${
-                isPlant
-                  ? "bg-green-600 text-white shadow-lg"
-                  : "text-gray-400 hover:text-white"
-              } ${isLoading ? "opacity-50 cursor-not-allowed" : ""}`}
-            >
-              🌱 Tumbuhan
-            </button>
+          <div className="flex items-center gap-3">
+            {/* Quiz Button */}
+            {(isAnimal || isPlant) && (
+              <button
+                onClick={handleQuiz}
+                className="px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white rounded-full font-medium transition-all duration-300 flex items-center gap-2"
+              >
+                <span>📝</span>
+                <span>Kuis</span>
+              </button>
+            )}
+
+            {/* Switch Button */}
+            <div className="flex items-center gap-3 bg-gray-800/50 rounded-full p-1 border border-white/10">
+              <button
+                onClick={handleToggle}
+                disabled={isLoading}
+                className={`px-4 py-2 rounded-full font-medium transition-all duration-300 ${
+                  isAnimal
+                    ? "bg-blue-600 text-white shadow-lg"
+                    : "text-gray-400 hover:text-white"
+                } ${isLoading ? "opacity-50 cursor-not-allowed" : ""}`}
+              >
+                🐾 Hewan
+              </button>
+              <button
+                onClick={handleToggle}
+                disabled={isLoading}
+                className={`px-4 py-2 rounded-full font-medium transition-all duration-300 ${
+                  isPlant
+                    ? "bg-green-600 text-white shadow-lg"
+                    : "text-gray-400 hover:text-white"
+                } ${isLoading ? "opacity-50 cursor-not-allowed" : ""}`}
+              >
+                🌱 Tumbuhan
+              </button>
+            </div>
           </div>
         </div>
       </header>
