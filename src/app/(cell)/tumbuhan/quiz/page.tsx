@@ -1,8 +1,8 @@
 "use client";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import Quiz from "@/components/Quiz";
-import { generateQuiz, QuizQuestion } from "@/lib/gemini";
+import Quiz from "@/../components/Quiz";
+import { generateQuiz, QuizQuestion } from "@/../lib/gemini";
 
 const organels = [
   "Inti sel yang mengandung materi genetik (DNA) dan mengontrol seluruh aktivitas sel.",
