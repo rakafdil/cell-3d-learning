@@ -15,7 +15,7 @@ export async function generateQuiz(
   descriptions: string[],
   cellType: string
 ): Promise<QuizQuestion[]> {
-  const model = genAI.getGenerativeModel({ model: "gemini-pro" });
+  const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
 
   const prompt = `
 Buatkan 10 soal pilihan ganda dalam bahasa Indonesia tentang organel sel ${cellType} berdasarkan deskripsi berikut:
